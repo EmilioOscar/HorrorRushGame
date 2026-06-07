@@ -1,0 +1,134 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System;
+
+public class AudioManager : MonoBehaviour
+{
+    public static AudioManager Instance;
+    public Sound[] musicSounds, sfxSounds;
+    public AudioSource musicSource, sfxSource;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        // Call a method to play music based on the current scene
+        PlayMusicForScene();
+    }
+
+    private void OnEnable()
+    {
+        // Subscribe to the scene loaded event to handle changes in the active scene
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe from the scene loaded event when the object is disabled or destroyed
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Call a method to play music based on the current scene when a new scene is loaded
+        PlayMusicForScene();
+    }
+
+    private void PlayMusicForScene()
+    {
+        // Get the current scene name
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        // Play different music based on the scene
+        switch (sceneName)
+        {
+            case "StartScreen":
+                PlayMusic("StartScreenMusic");
+                break;
+            case "Level1":
+                PlayMusic("Level1Music");
+                break;
+            case "Level2":
+                PlayMusic("Level2Music");
+                break;
+            case "EndScreen":
+                PlayMusic("EndScreenMusic");
+                break;
+            default:
+                Debug.Log("No music defined for scene: " + sceneName);
+                break;
+        }
+    }
+
+    public void PlayMusic(string name)
+    {
+        Sound s = Array.Find(musicSounds, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+        else
+        {
+            musicSource.clip = s.clip;
+            musicSource.Play();
+        }
+    }
+
+    // New method to play SFX
+    public void PlaySFX(string name)
+    {
+        Sound s = Array.Find(sfxSounds, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+        else
+        {
+            sfxSource.PlayOneShot(s.clip);
+            Debug.Log("Playing SFX: " + s.name);
+        }
+    }
+
+    // New method to set SFX volume
+    public void SFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
+        Debug.Log("SFX Volume set to: " + volume);
+    }
+
+    // New method to set music volume
+    public void MusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+        Debug.Log("Music Volume set to: " + volume);
+    }
+
+    // New method to toggle SFX mute
+    public void ToggleSFX()
+    {
+        sfxSource.mute = !sfxSource.mute;
+        Debug.Log("SFX Mute state: " + sfxSource.mute);
+    }
+
+    // New method to toggle music mute
+    public void ToggleMusic()
+    {
+        musicSource.mute = !musicSource.mute;
+        Debug.Log("Music Mute state: " + musicSource.mute);
+    }
+}
