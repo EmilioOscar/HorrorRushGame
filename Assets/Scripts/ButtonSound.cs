@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class ButtonSound : MonoBehaviour
 {
-    public Button continueButton; // Reference to your continue button
-    public AudioClip buttonClickSound; // The sound you want to play
+    public Button continueButton; // Reference to  continue button
+    public AudioClip buttonClickSound; // The sound to play
 
     private AudioSource audioSource;
 
