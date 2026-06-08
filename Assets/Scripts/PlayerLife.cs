@@ -38,7 +38,7 @@ public class PlayerLife : MonoBehaviour
         // Reset the enemy state when the player respawns
         ResetEnemyState();
 
-        // You can add more logic for handling the player's death here, such as disabling control, playing death sound, or any other necessary actions.
+        // can add more logic for handling the player's death here, such as disabling control, playing death sound, or any other necessary actions.
 
         // Use coroutine to restart the level after a delay
         StartCoroutine(RestartLevelAfterDelay(2f));
