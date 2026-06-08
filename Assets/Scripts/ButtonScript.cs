@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class ButtonScript : MonoBehaviour
 {
     private Button button;
-    public AudioSource MainButtonSound; // Drag your AudioSource reference into the Unity Editor
+    public AudioSource MainButtonSound; // Drag  AudioSource reference into the Unity Editor
     public Options optionsScript; // Drag the GameObject with the Options script attached in the Unity Editor
     public Startscreen startscreenScript; // Declare the Startscreen variable
 
@@ -29,15 +29,15 @@ public class ButtonScript : MonoBehaviour
             Debug.Log("Sound Played");
         }
 
-        // Add any other functionality you want to perform when a button is clicked
+        // Add any other functionality want to perform when a button is clicked
         if (gameObject.name == "PlayButton")
         {
-            // Put the code for starting the game or loading a scene for the play button
+            // the code for starting the game or loading a scene for the play button
         }
         else if (gameObject.name == "QuitButton")
         {
-            // Put the code for quitting the game or any other action for the quit button
-            Application.Quit(); // Note: Application.Quit may not work in the Unity Editor.
+            // code for quitting the game or any other action for the quit button
+            Application.Quit(); // Note: Application. Quit may not work in the Unity Editor.
         }
         else if (gameObject.name == "OptionsButton")
         {
@@ -56,7 +56,7 @@ public class ButtonScript : MonoBehaviour
         }
         else if (gameObject.name == "BackButton")
         {
-            // Put the code for loading the "Startscreen" scene
+            // code for loading the "Startscreen" scene
             if (startscreenScript != null)
             {
                 startscreenScript.LoadStartscreenScene();
