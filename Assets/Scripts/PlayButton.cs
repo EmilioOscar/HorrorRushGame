@@ -5,7 +5,7 @@ using System.Collections;
 public class PlayButton : MonoBehaviour
 {
     private Button button;
-    public AudioSource MainButtonSound; // Drag your AudioSource reference into the Unity Editor
+    public AudioSource MainButtonSound; // Drag AudioSource reference into the Unity Editor
 
     private void Start()
     {
