@@ -9,8 +9,8 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
-    private float defaultMusicVolume = 0.5f; // Set your default volume here
-    private float defaultSFXVolume = 0.5f;   // Set your default volume here
+    private float defaultMusicVolume = 0.5f; // Set default volume here
+    private float defaultSFXVolume = 0.5f;   // Set default volume here
 
     private void Awake()
     {
